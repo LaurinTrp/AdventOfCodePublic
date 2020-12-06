@@ -8,9 +8,10 @@ import Globals.FileReader;
 public class Day6 {
 	public static void main(String[] args) {
 
-		ArrayList<String> strings = FileReader.getFileContent("Day6\\AnswersExample"), answer = new ArrayList<>();
+		ArrayList<String> strings = FileReader.getFileContent("Day6\\Answers"), answer = new ArrayList<>();
 		ArrayList<String[]> stringArrays = new ArrayList<>();
 		String lines = "";
+		char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
 		for (int i = 0; i < strings.size(); i++) {
 			lines = "";
@@ -54,17 +55,80 @@ public class Day6 {
 		for (String string : answer) {
 			counter += string.length();
 		}
-		System.out.println(counter);
-
-		counter = 0;
-
+		System.err.println(counter);
+		int counterAll = 0;
+		
 		for (String[] string : stringArrays) {
-			if(string.length > 1) {
-				for (int i = 0; i < string.length; i++) {
-					System.out.println(string[i]);
+			counter=0;
+			for (int i = 0; i < alphabet.length; i++) {
+				if(allContain(string, alphabet[i])) {
+					counter++;
 				}
 			}
-//			System.out.println(line);
+			counterAll += counter;
+		}
+		
+		System.err.println(counterAll);
+		
+		
+	}
+	
+	private static boolean allContain(String[] string, char c) {
+		switch (string.length) {
+		case 10: {
+			if(!string[9].contains(Character.toString(c))) {
+				return false;
+			}
+		}
+		case 9: {
+			if(!string[8].contains(Character.toString(c))) {
+				return false;
+			}
+		}
+		case 8: {
+			if(!string[7].contains(Character.toString(c))) {
+				return false;
+			}
+		}
+		case 7: {
+			if(!string[6].contains(Character.toString(c))) {
+				return false;
+			}
+		}
+		case 6: {
+			if(!string[5].contains(Character.toString(c))) {
+				return false;
+			}			
+		}
+		case 5: {
+			if(!string[4].contains(Character.toString(c))) {
+				return false;
+			}
+		}
+		case 4: {
+			if(!string[3].contains(Character.toString(c))) {
+				return false;
+			}
+		}
+		case 3: {
+			if(!string[2].contains(Character.toString(c))) {
+				return false;
+			}
+		}
+		case 2: {
+			if(!string[1].contains(Character.toString(c))) {
+				return false;
+			}
+		}
+		case 1: {
+			if(!string[0].contains(Character.toString(c))) {
+				return false;
+			}
+			return true;
+		}
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + string.length);
 		}
 	}
+	
 }
