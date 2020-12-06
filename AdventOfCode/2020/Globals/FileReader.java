@@ -18,11 +18,6 @@ public class FileReader {
 			}
 			return strings;
 		} catch (IOException e) {
-			try {
-				reader.close();
-			} catch (IOException e1) {
-				e1.printStackTrace();
-			}
 			e.printStackTrace();
 		}
 		return null;
