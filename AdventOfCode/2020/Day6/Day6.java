@@ -7,10 +7,11 @@ import Globals.FileReader;
 
 public class Day6 {
 	public static void main(String[] args) {
-		
-		ArrayList<String> strings = FileReader.getFileContent("Day6\\Answers"), answer = new ArrayList<>();
+
+		ArrayList<String> strings = FileReader.getFileContent("Day6\\AnswersExample"), answer = new ArrayList<>();
+		ArrayList<String[]> stringArrays = new ArrayList<>();
 		String lines = "";
-		
+
 		for (int i = 0; i < strings.size(); i++) {
 			lines = "";
 			if (strings.get(i).equals("")) {
@@ -30,6 +31,7 @@ public class Day6 {
 				}
 			}
 			if (!lines.equals("")) {
+				stringArrays.add(lines.split(" "));
 				answer.add(lines.replaceAll(" ", ""));
 			}
 		}
@@ -48,12 +50,21 @@ public class Day6 {
 			}
 			answer.set(j, line);
 		}
-		System.out.println(answer);
 		int counter = 0;
 		for (String string : answer) {
 			counter += string.length();
 		}
 		System.out.println(counter);
-		
+
+		counter = 0;
+
+		for (String[] string : stringArrays) {
+			if(string.length > 1) {
+				for (int i = 0; i < string.length; i++) {
+					System.out.println(string[i]);
+				}
+			}
+//			System.out.println(line);
+		}
 	}
 }
