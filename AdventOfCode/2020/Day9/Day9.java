@@ -8,31 +8,31 @@ public class Day9 {
 	static final int length = 25;
 	static ArrayList<String> strings = FileReader.getFileContent("Day9\\Numbers");
 	static ArrayList<Integer> ints = new ArrayList<>(), ints2 = new ArrayList<>();
-	static int current = length, currentValue = 0, part1Final = 0, counter = 0;
-	static int[] counters = {2, 3, 4};
+	static int current = length, currentValue = 0, part1Final = 0;
+	static long counter = 0;
+	static int[] counters = {2, 3, 4, 5, 6, 7};
 	static boolean found;
 	public static void main(String[] args) {
 		for (int i = 0; i < strings.size(); i++) {
 			method();
 			current++;
 		}
+		
 		for (int i = 0; i < counters.length; i++) {
-			for (int k = 0; k < strings.size(); k++) {
+			for (int j = 0; j < strings.size() - counters[i]; j++) {
 				counter = 0;
-				for (int j = 0; j < counters[i]; j++) {
+				for (int k = 0; k < counters[i]; k++) 
 					try {
-						counter += Integer.parseInt(strings.get(k + j));
+						counter+= Long.parseLong(strings.get(j + k));
 					} catch (Exception e) {
 					}
 				}
-				System.out.println(counter + "\t" + counters[i]);
-				if(counter == 127) {
-					System.err.println(counter);
+				if(counter == part1Final) {
+					System.err.println("lol");
 				}
 			}
 		}
-		
-	}
+	
 	
 	private static void method() {
 		try {
